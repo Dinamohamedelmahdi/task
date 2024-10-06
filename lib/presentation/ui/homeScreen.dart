@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:task/data/model/apiManager/apimanager.dart';
+import 'package:get_it/get_it.dart';
 import 'package:task/presentation/homeViewModel.dart';
 import 'package:task/presentation/ui/ErrorStateWidget.dart';
 import 'package:task/presentation/ui/loadingwidget.dart';
 import 'package:task/presentation/ui/productWidget.dart';
 
-import '../../data/model/productclass.dart';
 import '../../di.dart';
+
 
 class  HomeScreen extends StatefulWidget {
   static const String routeName = "HomeScreen";
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
-
 //field injection
-var homeViewModel = getIt.get<HomeViewModel>();
+var homeViewModel = GetIt.instance.get<HomeViewModel>();
 
 
 class _HomeScreenState extends State<HomeScreen> {
@@ -24,7 +23,8 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    homeViewModel.getProducts();
+    homeViewModel.getProductsHomeScreen();
+
   }
   @override
   Widget build(BuildContext context) {
